@@ -1,0 +1,29 @@
+@{
+	Layout = "";
+}
+<form method="post" asp-action="AdminLogin">
+	<div class="form-structor">
+		<div class="signup">
+			<h2 class="form-title" id="signup"><span>or</span>Admin Login</h2>
+			<div class="form-holder">
+				@* <input type="text" class="input" placeholder="Name" /> *@
+				<input type="text" class="input" placeholder="Kullanıcı Adı" name="kullaniciAdi" />
+				<input type="password" class="input" placeholder="Password" name="sifre" />
+			</div>
+			<button id="btnuye" type="submit" class="submit-btn">Login</button>
+			@ViewBag.AdminMessage
+		</div>
+		<div class="login slide-up">
+			<div class="center">
+				<h2 class="form-title" id="login">🚧👑🚥</h2>
+				<div class="form-holder">
+					<p style="font-size: 15px;" class="input">Toplam Randevu Sayısı: <span style="font-weight: 800; font-size: 16px; padding-left: 10px;"> @ViewBag.RandevuSayisi</span></p>
+					@* <input type="password" class="input" placeholder="Password" /> *@
+				</div>
+				<button class="submit-btn"><a style="text-decoration: none; color: white" href="/">AnaSayfa</a></button>
+</form>
+</div>
+</div>
+</div>
+<link rel="stylesheet" href="~/css/AdminLogin.css">
+<script src="~/js/AdminLogin.js"></script>

@@ -1,0 +1,65 @@
+@{
+    Layout = "../Shared/_AdminLayout.cshtml";
+}
+
+<div class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1 class="m-0">Admin Paneli</h1>
+            </div><!-- /.col -->
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item"><a style="text-decoration: none;" href="/"><i class="fas fa-home"></i> Anasayfa</a></li>
+                    <li class="breadcrumb-item active">v1</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+</div>
+
+<section class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-lg-4 col-6">
+                <div class="small-box bg-info">
+                    <div class="inner">
+                        <h3>@ViewBag.RandevuSayisi</h3>
+                        <p>Randevu Sayısı</p>
+                    </div>
+                    <div class="icon">
+                        <i class="fas fa-car"></i>
+                    </div>
+                    <a href='@Url.Action("Randevular","Admin")' class="small-box-footer">Tümünü Gör <i
+                            class="fas fa-arrow-circle-right"></i></a>
+                </div>
+            </div>
+            <div class="col-lg-4 col-6">
+                <div class="small-box bg-success">
+                    <div class="inner">
+                        <h3>-</h3>
+                        <p>----- ---</p>
+                    </div>
+                    <div class="icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <a href='@Url.Action("Veterinerler","Admin")' class="small-box-footer">Tümünü Gör <i
+                            class="fas fa-arrow-circle-right"></i></a>
+                </div>
+            </div>
+            <div class="col-lg-4 col-6">
+                <div class="small-box bg-warning">
+                    <div class="inner">
+                        <h3>-</h3>
+                        <p>--- ----</p>
+                    </div>
+                    <div class="icon">
+                        <i class="fas fa-university"></i>
+                    </div>
+                    <a href='@Url.Action("Petler","Admin")' class="small-box-footer">Tümünü Gör <i
+                            class="fas fa-arrow-circle-right"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

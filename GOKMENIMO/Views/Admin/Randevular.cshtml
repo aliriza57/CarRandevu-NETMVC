@@ -1,0 +1,86 @@
+@model List<GOKMENIMO.Models.DB.Randevu>
+@{
+        Layout = "../Shared/_AdminLayout.cshtml";
+}
+<style>
+        span {
+                color: whitesmoke;
+                font-weight: 600;
+        }
+        b {
+                color: #88cb23;
+                font-weight: 680;
+        }
+        a {
+                color: #999;
+                text-decoration: none;
+        }
+        .btn-info {
+                background-color: #88cb23 !important;
+                border: none;
+        }
+</style>
+<div class="card card-solid">
+        <div class="card-body pb-0">
+                <div class="row">
+                        @foreach (var item in Model)
+                        {
+                                <div class="col-12 col-sm-6 col-md-4 d-flex align-items-stretch flex-column">
+                                        <div class="card bg-whitesmoke d-flex flex-fill">
+                                                <div class="card-header text-muted border-bottom-0">
+                                                        <h3 style="float: right;">@item.Id</h3>
+                                                        <h5>@item.Name</h5>
+                                                </div>
+                                                <div class="card-body">
+                                                        <div class="row">
+                                                                <div class="col-12">
+                                                                        <h2 class="lead" style="color: darkblue;">
+                                                                                <b><span>Work Type:</span>
+                                                                                        @item.WorkType</b>
+                                                                        </h2>
+                                                                        <h2 class="lead" style="color: darkblue;">
+                                                                                <b><span style="padding-left: 19px;">Car Type:</span>
+                                                                                        @item.CarType</b>
+                                                                        </h2>
+                                                                </div>
+                                                        </div>
+                                                </div>
+                                                <div class="card-footer">
+                                                        <div class="text-right">
+                                                                <a href="tel:@item.Tell" style="float: left;">@item.Tell</a>
+                                                                <a href="tel:@item.Tell" class="btn btn-sm btn-info">
+                                                                        <i class="fas fa-phone"></i> Ara
+                                                                </a>
+                                                                <button class="btn btn-danger btn-sm" data-randevuid="@item.Id"
+                                                                onclick="btnRandevuSil(this)">Sil</button>
+                                                        </div>
+                                                </div>
+                                        </div>
+                                </div>
+                        }
+                </div>
+        </div>
+</div>
+<script>
+        function btnRandevuSil(elem) {
+                var randevuId = $(elem).data("randevuid");
+                var obj = { Id: randevuId };
+                $.ajax({
+                        url: '@Url.Action("RandevuSilAjax","Admin")',
+                        type: 'post',
+                        data: JSON.stringify(obj),
+                        dataType: 'json',
+                        contentType: 'application/json;charset=utf-8',
+                        success: function (result) {
+                                if (result == 1) {
+                                        swal("Tebrikler!", "Randevu Başarıyla Silindi", "success").then(function () {
+                                                location.href = "/Admin/Randevular"
+                                        });
+                                }
+                        },
+                        error: function (err) {
+                                console.error(err.statusText);
+                        }
+                });
+        };
+</script>
